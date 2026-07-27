@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Mane — Applied AI Engineer & AI Product Developer</title>
+    <meta name="description" content="Portfolio of Harsh Mane, an Applied AI Engineer specializing in LLM applications, agentic AI, cloud automation, and scalable AI products.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --bg-main: #FAF8F5;
+            --bg-alt: #F3EFEA;
+            --bg-card: #FFFFFF;
+            --text-primary: #111827;
+            --text-secondary: #4B5563;
+            --text-muted: #6B7280;
+            --border-color: #18181B;
+            --accent-orange: #FF5722;
+            --accent-purple: #7C3AED;
+            --accent-blue: #2563EB;
+            --accent-green: #059669;
+            --accent-yellow: #F59E0B;
+            --accent-cream: #FEF3C7;
+            --shadow-brutal: 5px 5px 0px #18181B;
+            --shadow-brutal-hover: 8px 8px 0px #18181B;
+            --shadow-brutal-sm: 3px 3px 0px #18181B;
+            --radius-main: 16px;
+            --radius-sm: 8px;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* TOP READING PROGRESS BAR */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple), var(--accent-blue));
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* LAYOUT & CONTAINER */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 6.5rem 0;
+            position: relative;
+            border-bottom: 2.5px solid var(--border-color);
+        }
+
+        section:nth-child(even) {
+            background-color: var(--bg-alt);
+        }
+
+        /* DOT PATTERN BACKGROUND FOR ALT SECTIONS */
+        .dot-pattern {
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-opacity: 0.05;
+        }
+
+        /* BADGES & PILLS */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border: 2px solid var(--border-color);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-brutal-sm);
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-brutal);
+        }
+
+        .badge-orange { background: #FFEDD5; color: #C2410C; }
+        .badge-purple { background: #F3E8FF; color: #6B21A8; }
+        .badge-blue { background: #DBEAFE; color: #1E40AF; }
+        .badge-green { background: #D1FAE5; color: #065F46; }
+
+        /* BUTTONS WITH SPRING ANIMATIONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.9rem 1.85rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-brutal);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-brutal-hover);
+            background-color: #EA580C;
+        }
+
+        .btn-primary:active {
+            transform: translate(0px, 0px);
+            box-shadow: 2px 2px 0px #18181B;
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-brutal-hover);
+            background-color: var(--accent-cream);
+        }
+
+        .btn-secondary:active {
+            transform: translate(0px, 0px);
+            box-shadow: 2px 2px 0px #18181B;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1.1rem;
+            font-size: 0.875rem;
+            box-shadow: var(--shadow-brutal-sm);
+        }
+
+        .btn-sm:hover {
+            box-shadow: 5px 5px 0px #18181B;
+        }
+
+        /* NAVIGATION BAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 2.5px solid var(--border-color);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2.5px solid var(--border-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-brutal-sm);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: rotate(-2deg) scale(1.03);
+            box-shadow: var(--shadow-brutal);
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 700;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.3rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--accent-orange);
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-orange);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: var(--bg-card);
+            border: 2.5px solid var(--border-color);
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            box-shadow: var(--shadow-brutal-sm);
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .mobile-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        /* HERO SECTION & FLOATING ANIMATIONS */
+        .hero {
+            padding: 5.5rem 0 6.5rem 0;
+            background: radial-gradient(circle at 90% 10%, rgba(255, 87, 34, 0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 10% 90%, rgba(124, 58, 237, 0.12) 0%, transparent 45%);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-header-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-header-tags .badge {
+            animation: float 4s ease-in-out infinite alternate;
+        }
+
+        .hero-header-tags .badge:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
+        }
+
+        .hero-title {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--accent-orange) 30%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.25rem;
+            max-width: 650px;
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+        }
+
+        .hero-card {
+            background: var(--bg-card);
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-brutal-hover);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .hero-card:hover {
+            transform: translate(-4px, -4px) rotate(0.5deg);
+            box-shadow: 12px 12px 0px #18181B;
+        }
+
+        .profile-avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 3px solid var(--border-color);
+            background: #FFEDD5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            box-shadow: var(--shadow-brutal-sm);
+            transition: var(--transition);
+        }
+
+        .hero-card:hover .profile-avatar {
+            transform: scale(1.08) rotate(-5deg);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(5, 150, 105, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(5, 150, 105, 0);
+            }
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2.5px dashed var(--border-color);
+        }
+
+        .stat-item {
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-3px);
+            background: #FEF3C7;
+            box-shadow: var(--shadow-brutal-sm);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--accent-purple);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        /* INFINITE MARQUEE TICKER BANNER */
+        .marquee-banner {
+            background: var(--border-color);
+            color: var(--bg-main);
+            padding: 0.85rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 2.5px solid var(--border-color);
+            display: flex;
+            user-select: none;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 2rem;
+            animation: marquee 25s linear infinite;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .marquee-item span {
+            color: var(--accent-orange);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            margin-bottom: 3.75rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #FFEDD5;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-top: 0.5rem;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin-top: 0.75rem;
+        }
+
+        /* ABOUT SECTION */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .about-box {
+            background: var(--bg-card);
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-brutal);
+            transition: var(--transition);
+        }
+
+        .about-box:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .about-box p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .about-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-card {
+            background: #FEF3C7;
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-brutal);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            padding: 1.1rem 1.35rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .highlight-item:hover {
+            transform: translateX(6px);
+            border-color: var(--accent-orange);
+        }
+
+        .highlight-icon {
+            font-size: 1.6rem;
+            color: var(--accent-orange);
+            margin-top: 0.15rem;
+        }
+
+        .highlight-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-text p {
+            font-size: 0.925rem;
+            color: var(--text-secondary);
+        }
+
+        /* EXPERIENCE SECTION TIMELINE */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+        }
+
+        .exp-card {
+            background: var(--bg-card);
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 2.75rem;
+            box-shadow: var(--shadow-brutal);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .exp-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .exp-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 2px solid var(--bg-main);
+        }
+
+        .company-info h3 {
+            font-size: 1.7rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .role-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+        }
+
+        .exp-period {
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-brutal-sm);
+        }
+
+        .exp-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 0.85rem;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 1.75rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .exp-bullets li::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: 800;
+        }
+
+        /* PROJECTS SECTION & CARDS */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3.25rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-main);
+            overflow: hidden;
+            box-shadow: var(--shadow-brutal);
+            display: grid;
+            grid-template-columns: 1fr;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px #18181B;
+        }
+
+        .project-content {
+            padding: 2.75rem;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-num {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            background: #FFEDD5;
+            padding: 0.2rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border-color);
+        }
+
+        .project-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-role {
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.1rem 1.35rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-role strong {
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            background: #F3F4F6;
+            border: 1.5px solid var(--border-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background: var(--accent-cream);
+            transform: translateY(-2px);
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 2.5px dashed var(--border-color);
+        }
+
+        .project-outcome {
+            font-size: 0.95rem;
+            color: var(--accent-green);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* SKILLS SECTION GRID */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 2rem;
+            box-shadow: var(--shadow-brutal);
+            transition: var(--transition);
+        }
+
+        .skill-group:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .skill-group-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 2.5px solid var(--bg-main);
+        }
+
+        .skill-group-icon {
+            width: 42px;
+            height: 42px;
+            background: #FEF3C7;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-orange);
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-brutal-sm);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .skill-pill {
+            background: var(--bg-main);
+            border: 1.5px solid var(--border-color);
+            padding: 0.45rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .skill-pill:hover {
+            background: var(--accent-orange);
+            color: #FFFFFF;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: var(--shadow-brutal-sm);
+        }
+
+        /* EDUCATION & CERTIFICATIONS */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.75rem;
+        }
+
+        .edu-card, .cert-card {
+            background: var(--bg-card);
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 2.75rem;
+            box-shadow: var(--shadow-brutal);
+            transition: var(--transition);
+        }
+
+        .edu-card:hover, .cert-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-brutal-hover);
+        }
+
+        .edu-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-degree {
+            font-size: 1.45rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-inst {
+            font-size: 1.1rem;
+            color: var(--accent-purple);
+            font-weight: 800;
+        }
+
+        .edu-cgpa {
+            display: inline-block;
+            margin-top: 0.85rem;
+            background: #D1FAE5;
+            color: #065F46;
+            border: 2px solid var(--border-color);
+            padding: 0.4rem 0.95rem;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-brutal-sm);
+        }
+
+        .courses-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.25rem;
+        }
+
+        .cert-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            padding: 1.1rem;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-brutal-sm);
+            transition: var(--transition);
+        }
+
+        .cert-item:hover {
+            transform: translateX(6px);
+            background: var(--accent-cream);
+        }
+
+        .cert-icon {
+            font-size: 1.35rem;
+            color: var(--accent-orange);
+        }
+
+        /* CONTACT SECTION */
+        .contact-box {
+            background: var(--bg-card);
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-main);
+            padding: 4rem 2.5rem;
+            box-shadow: var(--shadow-brutal-hover);
+            text-align: center;
+            max-width: 920px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        .contact-box:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 12px 12px 0px #18181B;
+        }
+
+        .contact-title {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2.75rem auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.35rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1rem 1.85rem;
+            background: var(--bg-main);
+            border: 2.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.05rem;
+            box-shadow: var(--shadow-brutal);
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-brutal-hover);
+            background: var(--accent-cream);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2.5rem 0;
+            background: var(--bg-card);
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-secondary);
+            border-top: 2.5px solid var(--border-color);
+        }
+
+        /* SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active, .reveal-left.active, .reveal-right.active {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid, .edu-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.85rem;
+            }
+            .section-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                border-bottom: 2.5px solid var(--border-color);
+                flex-direction: column;
+                padding: 1.75rem;
+                gap: 1.25rem;
+                box-shadow: var(--shadow-brutal);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .hero-title {
+                font-size: 2.25rem;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="scrollProgress"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-code" style="color: var(--accent-orange);"></i>
+                HARSH<span>.MANE</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="btn btn-secondary btn-sm">Let's Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content reveal-left">
+                <div class="hero-header-tags">
+                    <span class="badge badge-orange"><i class="fa-solid fa-bolt"></i> Applied AI Engineer</span>
+                    <span class="badge badge-purple"><i class="fa-solid fa-location-dot"></i> Pune, India</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Building <span>practical AI products</span> for real-world problems.
+                </h1>
+                
+                <p class="hero-subtitle">
+                    I’m <strong>Harsh Mane</strong>, focused on LLM applications, multi-agent systems, cloud automation, and AI-powered SaaS products that bridge engineering and commercial utility.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        Connect With Me <i class="fa-solid fa-paper-plane"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-card reveal-right">
+                <div class="hero-card-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div class="profile-avatar">HM</div>
+                    <div class="profile-info">
+                        <h3 style="font-size: 1.4rem;">Harsh Mane</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 700;">AI Product Developer</p>
+                        <span class="badge badge-green" style="margin-top: 0.35rem; font-size: 0.75rem;">
+                            <span class="pulse-dot"></span> Available for Opportunities
+                        </span>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.98rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                    "I build AI systems that research, reason, automate workflows, and support better decisions."
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">AI Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Internships</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8.82</div>
+                        <div class="stat-label">B.Tech CGPA</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2026</div>
+                        <div class="stat-label">Grad Year</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFINITE MARQUEE TICKER BANNER -->
+    <div class="marquee-banner">
+        <div class="marquee-content">
+            <div class="marquee-item"><span>★</span> Applied AI Engineer</div>
+            <div class="marquee-item"><span>★</span> Agentic Systems</div>
+            <div class="marquee-item"><span>★</span> LLM Applications</div>
+            <div class="marquee-item"><span>★</span> Multi-Agent Orchestration</div>
+            <div class="marquee-item"><span>★</span> AWS Cloud Automation</div>
+            <div class="marquee-item"><span>★</span> Full-Stack SaaS</div>
+            <div class="marquee-item"><span>★</span> RAG Systems</div>
+            <div class="marquee-item"><span>★</span> Applied AI Engineer</div>
+            <div class="marquee-item"><span>★</span> Agentic Systems</div>
+            <div class="marquee-item"><span>★</span> LLM Applications</div>
+            <div class="marquee-item"><span>★</span> Multi-Agent Orchestration</div>
+            <div class="marquee-item"><span>★</span> AWS Cloud Automation</div>
+            <div class="marquee-item"><span>★</span> Full-Stack SaaS</div>
+            <div class="marquee-item"><span>★</span> RAG Systems</div>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="dot-pattern">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">01 / Background</div>
+                <h2 class="section-title">About & Philosophy</h2>
+                <p class="section-desc">
+                    Combining AI engineering, cloud infrastructure, and product design to solve genuine business challenges.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-box reveal-left">
+                    <p>
+                        I am an Applied AI Engineer and final-year Computer Science Engineering student specializing in Artificial Intelligence at Vishwakarma Institute of Information Technology, Pune. I build practical AI products using large language models, agentic workflows, automation, cloud technologies, and full-stack development.
+                    </p>
+                    <p>
+                        My work focuses on transforming real business problems into usable AI-powered applications, including multi-agent research systems, sales forecasting concepts, cloud automation assistants, and creator-focused SaaS platforms. Through internships at Wipro and DXC Technology, I have gained experience working with cloud infrastructure, generative AI, SAP technologies, AI/ML workflows, and enterprise problem-solving.
+                    </p>
+                    <p>
+                        What differentiates me is that I approach AI from both an engineering and product perspective. I am not interested in building AI demos that stop at a notebook or chatbot; I want to build secure, scalable, and commercially useful products that people and businesses can use in the real world.
+                    </p>
+                </div>
+
+                <div class="highlight-card reveal-right">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Core Focus Areas</h3>
+                    
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-brain highlight-icon"></i>
+                        <div class="highlight-text">
+                            <h4>Agentic Workflows & Multi-Agent AI</h4>
+                            <p>Orchestrating stateful, multi-agent pipelines with LangGraph & AutoGen to solve multi-step knowledge tasks.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-cloud-bolt highlight-icon"></i>
+                        <div class="highlight-text">
+                            <h4>Cloud Automation & RAG Systems</h4>
+                            <p>Connecting LLMs to AWS infrastructure and vector storage for natural language cloud management.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-rocket highlight-icon"></i>
+                        <div class="highlight-text">
+                            <h4>AI SaaS & Product Engineering</h4>
+                            <p>Designing user-centric architectures, full-stack Next.js interfaces, and business forecasting models.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">02 / Experience</div>
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-desc">
+                    Through internships at Wipro and DXC Technology, I have gained exposure to enterprise AI, cloud infrastructure, SAP technologies, and business-focused AI use cases.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <!-- DXC Technology -->
+                <div class="exp-card reveal">
+                    <div class="exp-header">
+                        <div class="company-info">
+                            <h3>DXC Technology</h3>
+                            <div class="role-title">SAP AI/ML Intern</div>
+                        </div>
+                        <span class="exp-period"><i class="fa-regular fa-calendar"></i> November 2025 – Present</span>
+                    </div>
+
+                    <p class="exp-desc">
+                        Working on enterprise AI projects involving SAP technologies, AI/ML concepts, data preparation, and corporate solution development. Exploring SAP BTP and SAP AI Core while creating guided WalkMe workflows and business forecasting pitch solutions.
+                    </p>
+
+                    <ul class="exp-bullets">
+                        <li>Conducting research for enterprise AI and forecasting use cases.</li>
+                        <li>Identifying external demand & market variables influencing product demand for Godrej Agrovet's Crop Care business.</li>
+                        <li>Supporting data cleaning, model preparation, and lag analysis activities.</li>
+                        <li>Exploring SAP BTP, SAP AI Core, and SAP-based AI workflows.</li>
+                        <li>Designing guided walkthroughs using SAP WalkMe.</li>
+                        <li>Translating technical analysis into actionable stakeholder presentations.</li>
+                    </ul>
+                </div>
+
+                <!-- Wipro Limited -->
+                <div class="exp-card reveal">
+                    <div class="exp-header">
+                        <div class="company-info">
+                            <h3>Wipro Limited</h3>
+                            <div class="role-title">Cloud and AI Technologies Intern</div>
+                        </div>
+                        <span class="exp-period"><i class="fa-regular fa-calendar"></i> June 2025 – November 2025</span>
+                    </div>
+
+                    <p class="exp-desc">
+                        Six-month internship focused on the intersection of artificial intelligence, cloud automation, and DevOps. Gained hands-on exposure to AWS infrastructure, generative AI applications, and multi-step AI agents.
+                    </p>
+
+                    <ul class="exp-bullets">
+                        <li>Building and managing AWS cloud infrastructure components.</li>
+                        <li>Exploring generative AI models and LLM-based applications.</li>
+                        <li>Developing AI agents capable of carrying out multi-step tasks using language models and external tools.</li>
+                        <li>Connecting language models with tools and cloud services seamlessly.</li>
+                        <li>Mastering cloud automation, DevOps fundamentals, and deployment workflows.</li>
+                        <li>Studying AI operational efficiency within enterprise cloud systems.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="dot-pattern">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">03 / Engineering Work</div>
+                <h2 class="section-title">Selected Projects</h2>
+                <p class="section-desc">
+                    These projects reflect my interest in building AI systems that go beyond basic model demonstrations to multi-agent platforms, cloud automation, and SaaS architecture.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-num">PROJECT #01</span>
+                            <span class="badge badge-purple">Multi-Agent System</span>
+                        </div>
+                        <h3 class="project-title">Multi-Agent Technical Blog Writing System</h3>
+                        <p class="project-desc">
+                            An autonomous AI system that researches, plans, writes, and reviews long-form technical articles by dividing the workflow among specialized agents (Research, Planning, Writer, Image, and Editor Agents) using a stateful LangGraph graph.
+                        </p>
+
+                        <div class="project-role">
+                            <strong>My Role:</strong> Designed system architecture, agent prompts, and stateful multi-agent workflow in LangGraph with Groq & Llama 3.3 70B low-latency inference.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">Groq</span>
+                            <span class="tech-tag">Llama 3.3 70B</span>
+                            <span class="tech-tag">Tool Calling</span>
+                            <span class="tech-tag">Web Research APIs</span>
+                            <span class="tech-tag">Structured Outputs</span>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-outcome">
+                                <i class="fa-solid fa-circle-check"></i> Produces 6–8 section cited articles autonomously
+                            </div>
+                            <a href="https://github.com/mane30harsh/Blog_ai.git" target="_blank" class="btn btn-secondary btn-sm">
+                                GitHub Repository <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card reveal">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-num">PROJECT #02</span>
+                            <span class="badge badge-orange">Cloud & AI Assistant</span>
+                        </div>
+                        <h3 class="project-title">AWS Conversational Cloud Assistant</h3>
+                        <p class="project-desc">
+                            An AI-powered interface enabling users to manage cloud infrastructure using natural language. Interprets commands and executes actions for EC2 instance management, IAM roles, CloudWatch, VPCs, and load balancing via AWS APIs and RAG.
+                        </p>
+
+                        <div class="project-role">
+                            <strong>My Role:</strong> Built Streamlit frontend, cloud execution pipeline, AWS Boto3 integration, and hybrid local (Ollama) / cloud (Amazon Bedrock) LLM routing.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">AWS Boto3</span>
+                            <span class="tech-tag">Amazon Bedrock</span>
+                            <span class="tech-tag">Ollama</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Supabase pgvector</span>
+                            <span class="tech-tag">RAG</span>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-outcome">
+                                <i class="fa-solid fa-circle-check"></i> Replaces CLI complexity with safe NLP commands
+                            </div>
+                            <a href="https://github.com/mane30harsh/genai-aws-ec2.git" target="_blank" class="btn btn-secondary btn-sm">
+                                GitHub Repository <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card reveal">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-num">PROJECT #03</span>
+                            <span class="badge badge-blue">Code Execution Agent</span>
+                        </div>
+                        <h3 class="project-title">AlgoGenie — Multi-Agent DSA Problem-Solving System</h3>
+                        <p class="project-desc">
+                            A multi-agent system designed to solve, execute, and review Data Structures & Algorithms problems. Combines a Problem Solver Agent, a Code Executor Agent running in isolated Docker containers, and a Reviewer Agent checking edge cases.
+                        </p>
+
+                        <div class="project-role">
+                            <strong>My Role:</strong> Built AutoGen orchestration, local Ollama Llama 3.2 model configuration, Docker container sandbox, and Streamlit user interface.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Microsoft AutoGen</span>
+                            <span class="tech-tag">Ollama</span>
+                            <span class="tech-tag">Llama 3.2</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Sandboxed Code Execution</span>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-outcome">
+                                <i class="fa-solid fa-circle-check"></i> Zero-runtime error verified code output
+                            </div>
+                            <span class="badge badge-orange"><i class="fa-solid fa-code-commit"></i> Repo updating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card reveal">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-num">PROJECT #04</span>
+                            <span class="badge badge-green">SaaS Platform</span>
+                        </div>
+                        <h3 class="project-title">Collabo — Creator and Brand Collaboration Platform</h3>
+                        <p class="project-desc">
+                            A SaaS platform concept connecting emerging content creators with brands through a professional campaign marketplace. Designed with upcoming AI matching, automated proposals, and portfolio performance insights.
+                        </p>
+
+                        <div class="project-role">
+                            <strong>My Role:</strong> Conceptualized product strategy, defined user journeys, and engineered Next.js + React + TypeScript + Tailwind CSS responsive interface.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">SaaS Architecture</span>
+                            <span class="tech-tag">Product Design</span>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-outcome">
+                                <i class="fa-solid fa-circle-check"></i> Creator discovery & marketplace workflows
+                            </div>
+                            <a href="https://github.com/mane30harsh" target="_blank" class="btn btn-secondary btn-sm">
+                                View Profile <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card reveal">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-num">PROJECT #05</span>
+                            <span class="badge badge-yellow">Business & Enterprise AI</span>
+                        </div>
+                        <h3 class="project-title">Real-Time Sales Forecasting Concept for Agrovet</h3>
+                        <p class="project-desc">
+                            A business forecasting framework proposed for Godrej Agrovet's Crop Care division. Utilizes external variables such as rainfall, crop acreage, commodity prices, and lagged correlation analysis to predict product demand without internal dataset dependencies.
+                        </p>
+
+                        <div class="project-role">
+                            <strong>My Role:</strong> Researched product categories, engineered external dataset parameters, structured correlation models, and created enterprise pitch presentations.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Sales Forecasting</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                            <span class="tech-tag">Correlation & Lag Analysis</span>
+                            <span class="tech-tag">SAP RPT Concepts</span>
+                            <span class="tech-tag">Agri-Data Research</span>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-outcome">
+                                <i class="fa-solid fa-lock"></i> Confidential Enterprise Internship Project
+                            </div>
+                            <span class="badge badge-purple"><i class="fa-solid fa-briefcase"></i> DXC Pitch Work</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">04 / Capabilities</div>
+                <h2 class="section-title">Technical Toolkit</h2>
+                <p class="section-desc">
+                    Comprehensive view of technologies, frameworks, and tools I use to build scalable AI systems.
+                </p>
+            </div>
+
+            <div class="skills-container">
+                <!-- Group 1 -->
+                <div class="skill-group reveal">
+                    <div class="skill-group-title">
+                        <div class="skill-group-icon"><i class="fa-solid fa-brain"></i></div>
+                        AI & Machine Learning
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-pill">Large Language Models</span>
+                        <span class="skill-pill">Agentic AI</span>
+                        <span class="skill-pill">Multi-Agent Systems</span>
+                        <span class="skill-pill">RAG</span>
+                        <span class="skill-pill">Prompt Engineering</span>
+                        <span class="skill-pill">Tool Calling</span>
+                        <span class="skill-pill">Structured LLM Outputs</span>
+                        <span class="skill-pill">NLP</span>
+                        <span class="skill-pill">Forecasting</span>
+                        <span class="skill-pill">Feature Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Group 2 -->
+                <div class="skill-group reveal">
+                    <div class="skill-group-title">
+                        <div class="skill-group-icon"><i class="fa-solid fa-cubes"></i></div>
+                        AI & Data Frameworks
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-pill">LangGraph</span>
+                        <span class="skill-pill">LangChain</span>
+                        <span class="skill-pill">Microsoft AutoGen</span>
+                        <span class="skill-pill">CrewAI</span>
+                        <span class="skill-pill">Groq</span>
+                        <span class="skill-pill">Ollama</span>
+                        <span class="skill-pill">Hugging Face</span>
+                        <span class="skill-pill">pgvector</span>
+                        <span class="skill-pill">Pandas</span>
+                        <span class="skill-pill">Scikit-Learn</span>
+                    </div>
+                </div>
+
+                <!-- Group 3 -->
+                <div class="skill-group reveal">
+                    <div class="skill-group-title">
+                        <div class="skill-group-icon"><i class="fa-solid fa-code"></i></div>
+                        Languages & Web Dev
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">TypeScript</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">Next.js</span>
+                        <span class="skill-pill">React</span>
+                        <span class="skill-pill">Streamlit</span>
+                        <span class="skill-pill">FastAPI</span>
+                        <span class="skill-pill">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Group 4 -->
+                <div class="skill-group reveal">
+                    <div class="skill-group-title">
+                        <div class="skill-group-icon"><i class="fa-solid fa-cloud"></i></div>
+                        Cloud, DevOps & Enterprise
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-pill">AWS</span>
+                        <span class="skill-pill">Amazon Bedrock</span>
+                        <span class="skill-pill">EC2 & VPC</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">Git & GitHub</span>
+                        <span class="skill-pill">Supabase</span>
+                        <span class="skill-pill">PostgreSQL</span>
+                        <span class="skill-pill">SAP BTP</span>
+                        <span class="skill-pill">SAP AI Core</span>
+                        <span class="skill-pill">SAP WalkMe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section id="education" class="dot-pattern">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">05 / Qualifications</div>
+                <h2 class="section-title">Education & Credentials</h2>
+                <p class="section-desc">
+                    Academic foundation and specialized certifications supporting my technical domain expertise.
+                </p>
+            </div>
+
+            <div class="edu-grid">
+                <!-- Education -->
+                <div class="edu-card reveal-left">
+                    <div class="edu-header">
+                        <h3 class="edu-degree">B.Tech in Computer Science Engineering (Artificial Intelligence)</h3>
+                        <div class="edu-inst">Vishwakarma Institute of Information Technology, Pune</div>
+                        <div class="edu-cgpa"><i class="fa-solid fa-graduation-cap"></i> CGPA: 8.82 / 10</div>
+                        <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted); margin-top: 0.5rem;">
+                            Graduation Year: 2026
+                        </div>
+                    </div>
+
+                    <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem;">Relevant Coursework:</h4>
+                    <div class="courses-list">
+                        <span class="tech-tag">Artificial Intelligence</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Generative AI</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Cloud Computing</span>
+                        <span class="tech-tag">Data Structures & Algo</span>
+                        <span class="tech-tag">DBMS & SQL</span>
+                        <span class="tech-tag">Data Analytics</span>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="cert-card reveal-right">
+                    <h3 style="font-size: 1.45rem; margin-bottom: 1.5rem;">Certifications & Languages</h3>
+
+                    <ul class="cert-list">
+                        <li class="cert-item">
+                            <i class="fa-solid fa-language cert-icon"></i>
+                            <div>
+                                <strong>German Language Certification</strong>
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Goethe-Zertifikat A2</div>
+                            </div>
+                        </li>
+
+                        <li class="cert-item">
+                            <i class="fa-solid fa-certificate cert-icon"></i>
+                            <div>
+                                <strong>SAP Generative AI Certification</strong>
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">SAP AI Core & BTP Exploration</div>
+                            </div>
+                        </li>
+
+                        <li class="cert-item">
+                            <i class="fa-solid fa-award cert-icon"></i>
+                            <div>
+                                <strong>SAP WalkMe Certification</strong>
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Digital Adoption & Guided Workflows</div>
+                            </div>
+                        </li>
+
+                        <li class="cert-item">
+                            <i class="fa-solid fa-cloud cert-icon"></i>
+                            <div>
+                                <strong>AWS Cloud Technologies</strong>
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Practiced through enterprise projects</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box reveal">
+                <span class="badge badge-orange" style="margin-bottom: 1.25rem;">
+                    <i class="fa-regular fa-envelope"></i> Get In Touch
+                </span>
+                
+                <h2 class="contact-title">Let's Build Something Great Together</h2>
+                
+                <p class="contact-text">
+                    I am currently open to <strong>Applied AI roles, AI Engineering, LLM Application development, freelance projects,</strong> and collaborations on AI-powered SaaS products.
+                </p>
+
+                <div class="social-links">
+                    <a href="mailto:mane30harsh@gmail.com" class="social-btn">
+                        <i class="fa-solid fa-envelope" style="color: var(--accent-orange);"></i> Email Me
+                    </a>
+                    
+                    <a href="http://www.linkedin.com/in/mane2004harsh" target="_blank" class="social-btn">
+                        <i class="fa-brands fa-linkedin" style="color: #0A66C2;"></i> LinkedIn
+                    </a>
+                    
+                    <a href="https://github.com/mane30harsh" target="_blank" class="social-btn">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    
+                    <a href="https://www.instagram.com/mane30harsh/" target="_blank" class="social-btn">
+                        <i class="fa-brands fa-instagram" style="color: #E4405F;"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Harsh Mane. Built with clean HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT & ANIMATIONS -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Top Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer for Scroll Reveal Animations
+        const observerOptions = {
+            threshold: 0.12,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Active Navigation Highlighting on Scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
